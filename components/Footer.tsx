@@ -13,7 +13,7 @@ const Footer: FC = () => {
                         href="https://www.behance.net/davidbouscarle"
                         target="_blank"
                     >
-                        <Image src="/behance.png" alt="logo behance David Bouscarle photography" width={33} height={33} />
+                        <Image src="/behance.png" alt="logo behance David Bouscarle photography" width={32} height={32} />
                     </Link>
                 </li>
                 <li className={styles.listItem}>
