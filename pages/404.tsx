@@ -3,7 +3,7 @@ import { Jost } from "@next/font/google";
 
 const jost = Jost({ subsets: ["latin"] });
 
-export default function Home() {
+export default function NotFound() {
     return (
         <>
             <Head>
@@ -35,6 +35,9 @@ export default function Home() {
                 />
                 <link rel="manifest" href="/site.webmanifest" />
             </Head>
+            <main className={jost.className} style={{ marginLeft: 20 }}>
+                There is no way...
+            </main>
         </>
     );
 }
