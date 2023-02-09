@@ -13,7 +13,7 @@ const Footer: FC = () => {
                         href="https://www.behance.net/davidbouscarle"
                         target="_blank"
                     >
-                        <Image src="/behance.png" alt="logo behance David Bouscarle photography" width={17} height={17} />
+                        <Image src="/behance.png" alt="logo behance David Bouscarle photography" width={33} height={33} />
                     </Link>
                 </li>
                 <li className={styles.listItem}>
@@ -21,7 +21,7 @@ const Footer: FC = () => {
                         href="https://www.linkedin.com/in/davidbouscarle/"
                         target="_blank"
                     >
-                        <Image src="/linkedin.png" alt="logo linkedin David Bouscarle photography" width={16} height={16} />
+                        <Image src="/linkedin.png" alt="logo linkedin David Bouscarle photography" width={32} height={32} />
                     </Link>
                 </li>
                 <li className={styles.listItem}>
@@ -29,7 +29,7 @@ const Footer: FC = () => {
                         href="https://github.com/DavidBouscarle"
                         target="_blank"
                     >
-                        <Image src="/github.png" alt="logo github David Bouscarle photography" width={16} height={16} />
+                        <Image src="/github.png" alt="logo github David Bouscarle photography" width={32} height={32} />
                     </Link>
                 </li>
             </ul>

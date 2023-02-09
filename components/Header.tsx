@@ -8,8 +8,8 @@ const Header: FC = () => {
             <Image
                 src="/logo_david_bouscarle.png"
                 alt="Logo David Bouscarle photography"
-                width={30}
-                height={30}
+                width={50}
+                height={50}
             />
             <p>Coming soon...</p>
         </header>
