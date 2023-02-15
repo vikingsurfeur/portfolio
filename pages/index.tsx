@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { Jost } from "@next/font/google";
+import { baseUrlApi, envResolver } from "@/lib/envResolver";
 
-const jost = Jost({ subsets: ["latin"] });
+export default function Home({ posts }: any) {
+    console.log(posts);
 
-export default function Home() {
     return (
         <>
             <Head>
@@ -37,4 +37,17 @@ export default function Home() {
             </Head>
         </>
     );
+}
+
+export async function getStaticProps() {
+    const response = await fetch(`${baseUrlApi}/posts`, {
+        headers: {
+            Authorization: `Bearer ${envResolver.apiKey}`,
+        },
+    });
+    const posts = await response.json();
+
+    return {
+        props: { posts },
+    };
 }
