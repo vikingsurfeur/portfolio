@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { baseUrlApi, envResolver } from "@/lib/envResolver";
 
-export default function Home({ posts }: any) {
-    console.log(posts);
-
+export default function Home() {
     return (
         <>
             <Head>
@@ -37,17 +35,4 @@ export default function Home({ posts }: any) {
             </Head>
         </>
     );
-}
-
-export async function getStaticProps() {
-    const response = await fetch(`${baseUrlApi}/posts`, {
-        headers: {
-            Authorization: `Bearer ${envResolver.apiKey}`,
-        },
-    });
-    const posts = await response.json();
-
-    return {
-        props: { posts },
-    };
 }
