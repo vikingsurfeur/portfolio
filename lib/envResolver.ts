@@ -1,6 +1,8 @@
 export const envResolver = {
-    apiUrl: process.env.HOST_URL,
-    apiKey: process.env.API_TOKEN_SALT,
+    hostProtocol: process.env.NEXT_PUBLIC_HOST_PROTOCOL,
+    hostDomain: process.env.NEXT_PUBLIC_HOST_DOMAIN,
+    apiKey: process.env.NEXT_PUBLIC_API_TOKEN_SALT,
 };
 
-export const baseUrlApi = `${envResolver.apiUrl}`;
+export const baseHostUrl = `${envResolver.hostProtocol}://${envResolver.hostDomain}`;
+export const baseUrlApi = `${envResolver.hostProtocol}://${envResolver.hostDomain}/api`;

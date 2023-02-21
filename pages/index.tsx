@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { baseUrlApi, envResolver } from "@/lib/envResolver";
 
 export default function Home() {
     return (
