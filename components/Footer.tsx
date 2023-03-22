@@ -18,7 +18,7 @@ const Footer: FC = () => {
                 </li>
                 <li className={styles.listItem}>
                     <Link
-                        href="https://www.linkedin.com/in/davidbouscarle/"
+                        href="https://www.linkedin.com/in/vikingsurfeur/"
                         target="_blank"
                     >
                         <Image src="/linkedin.png" alt="logo linkedin David Bouscarle photography" width={32} height={32} />
