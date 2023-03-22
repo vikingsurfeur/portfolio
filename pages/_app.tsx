@@ -1,14 +1,18 @@
 import type { AppProps } from "next/app";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "@/components/Layout";
-import "@/styles/normalize.css";
-import "@/styles/reset.css";
+import theme from "@/lib/theme";
+import "@fontsource/bebas-neue";
+import "@fontsource/jost";
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
-        <Layout>
-            <Component {...pageProps} />
-            <Analytics />
-        </Layout>
+        <ChakraProvider theme={theme}>
+            <Layout>
+                <Component {...pageProps} />
+                <Analytics />
+            </Layout>
+        </ChakraProvider>
     );
 }

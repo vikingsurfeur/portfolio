@@ -1,37 +1,22 @@
-import Head from "next/head";
+import HeadPage from "@/components/HeadPage";
 
 export default function Home() {
     return (
         <>
-            <Head>
-                <title>David Bouscarle | Photography</title>
-                <meta
-                    name="description"
-                    content="David Bouscarle photography portfolio, under construction, comming soon..."
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link
-                    rel="apple-touch-icon"
-                    sizes="180x180"
-                    href="/apple-touch-icon.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="32x32"
-                    href="/favicon-32x32.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="16x16"
-                    href="/favicon-16x16.png"
-                />
-                <link rel="manifest" href="/site.webmanifest" />
-            </Head>
+            <HeadPage
+                title="David Bouscarle | Photography | Home"
+                description="David Bouscarle, a landscape and nature photographer 
+                from the Luberon region and based at the foot of Mont Ventoux, 
+                invites you to discover his vision of natural beauty through his captivating photographs. 
+                Passionate about forests and mountains, David travels to the most beautiful 
+                places in the region and around the world to capture timeless and striking images. 
+                Explore his portfolio and let yourself be transported into a world of serenity and wonder. 
+                Contact David for collaborative projects, art print sales. 
+                Boost your inspiration with with David Bouscarle's photographs."    
+            />
+            <main>
+                
+            </main>
         </>
     );
 }

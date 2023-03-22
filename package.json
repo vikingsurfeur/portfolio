@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.5.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/bebas-neue": "^4.5.9",
+    "@fontsource/jost": "^4.5.13",
     "@next/font": "13.1.6",
     "@types/node": "18.13.0",
     "@types/react": "18.0.27",
@@ -16,6 +21,7 @@
     "@vercel/analytics": "^0.1.9",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "framer-motion": "^9.0.7",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

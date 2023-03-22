@@ -1,43 +1,16 @@
+import HeadPage from "@/components/HeadPage";
 import Head from "next/head";
-import { Jost } from "@next/font/google";
-
-const jost = Jost({ subsets: ["latin"] });
 
 export default function NotFound() {
     return (
         <>
-            <Head>
-                <title>David Bouscarle | Photography</title>
-                <meta
-                    name="description"
-                    content="David Bouscarle photography portfolio, under construction, comming soon..."
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link
-                    rel="apple-touch-icon"
-                    sizes="180x180"
-                    href="/apple-touch-icon.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="32x32"
-                    href="/favicon-32x32.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="16x16"
-                    href="/favicon-16x16.png"
-                />
-                <link rel="manifest" href="/site.webmanifest" />
-            </Head>
-            <main className={jost.className} style={{ marginLeft: 20 }}>
-                There is no way...
-            </main>
+            <HeadPage
+                title="David Bouscarle | Photography | 404"
+                description="Oops! Looks like you've wandered into the unknown, like a lost sheep in the Alps. 
+                But don't worry, we're not about to abandon you! Let's find your way back to the herd, shall we? 
+                Just hit that back button, or click on one of our links to get back on track. 
+                We promise, we won't shear you off too much for getting lost."
+            />
         </>
     );
 }
