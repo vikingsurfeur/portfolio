@@ -18,7 +18,7 @@ const Footer: FC = () => {
                 </li>
                 <li className={styles.listItem}>
                     <Link
-                        href="https://www.linkedin.com/in/vikingsurfeur/"
+                        href="https://www.linkedin.com/in/davidbouscarle"
                         target="_blank"
                     >
                         <Image src="/linkedin.png" alt="logo linkedin David Bouscarle photography" width={32} height={32} />
@@ -26,7 +26,7 @@ const Footer: FC = () => {
                 </li>
                 <li className={styles.listItem}>
                     <Link
-                        href="https://github.com/DavidBouscarle"
+                        href="https://github.com/vikingsurfeur"
                         target="_blank"
                     >
                         <Image src="/github.png" alt="logo github David Bouscarle photography" width={32} height={32} />
