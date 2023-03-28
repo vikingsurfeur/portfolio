@@ -30,7 +30,10 @@ const Header: FC = () => {
                 toggleBurger={toggleBurger}
                 isBurgerOpen={isBurgerOpen}
             />
-            <Menu isBurgerOpen={isBurgerOpen} />
+            <Menu 
+                toggleBurger={toggleBurger}
+                isBurgerOpen={isBurgerOpen} 
+            />
         </Box>
     );
 };

@@ -24,7 +24,7 @@ const listVariants = {
     visible: {
         transition: {
             staggerChildren: 0.1,
-            delayChildren: 0.3,
+            delayChildren: 0.2,
         },
     },
     hidden: {
@@ -46,7 +46,40 @@ const listItemVariants = {
     },
 };
 
-const Menu: FC<{ isBurgerOpen: boolean }> = ({ isBurgerOpen }) => {
+const MenuLink: FC<{
+    href: string;
+    label: string;
+    toggleBurger: () => void;
+}> = ({ href, label, toggleBurger }) => {
+    return (
+        <AnimatedListItem
+            variants={listItemVariants}
+            listStyleType="none"
+            marginBottom="30px"
+            height="fit-content"
+            whileHover={{
+                scale: 1.05,
+            }}
+            whileTap={{ scale: 0.95 }}
+        >
+            <Link
+                as={NextLink}
+                href={href}
+                fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+                color="black"
+                _hover={{ textDecoration: "none" }}
+                onClick={toggleBurger}
+            >
+                {label}
+            </Link>
+        </AnimatedListItem>
+    );
+};
+
+const Menu: FC<{
+    toggleBurger: () => void;
+    isBurgerOpen: boolean;
+}> = ({ toggleBurger, isBurgerOpen }) => {
     return (
         <AnimatedBox
             variants={menuVariants}
@@ -73,62 +106,26 @@ const Menu: FC<{ isBurgerOpen: boolean }> = ({ isBurgerOpen }) => {
                 flexDirection="column"
                 alignItems="center"
             >
-                <AnimatedListItem
-                    variants={listItemVariants}
-                    listStyleType="none"
-                    marginBottom="30px"
-                >
-                    <Link
-                        as={NextLink}
-                        href="/home"
-                        fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                        color="black"
-                    >
-                        HOME
-                    </Link>
-                </AnimatedListItem>
-                <AnimatedListItem
-                    variants={listItemVariants}
-                    listStyleType="none"
-                    marginBottom="30px"
-                >
-                    <Link
-                        as={NextLink}
-                        href="/porfolio"
-                        fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                        color="black"
-                    >
-                        PORTFOLIO
-                    </Link>
-                </AnimatedListItem>
-                <AnimatedListItem
-                    variants={listItemVariants}
-                    listStyleType="none"
-                    marginBottom="30px"
-                >
-                    <Link
-                        as={NextLink}
-                        href="/about"
-                        fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                        color="black"
-                    >
-                        ABOUT
-                    </Link>
-                </AnimatedListItem>
-                <AnimatedListItem
-                    variants={listItemVariants}
-                    listStyleType="none"
-                    marginBottom="30px"
-                >
-                    <Link
-                        as={NextLink}
-                        href="/contact"
-                        fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
-                        color="black"
-                    >
-                        CONTACT
-                    </Link>
-                </AnimatedListItem>
+                <MenuLink 
+                    href="/" 
+                    label="HOME" 
+                    toggleBurger={toggleBurger} 
+                />
+                <MenuLink
+                    href="/portfolio"
+                    label="PORTFOLIO"
+                    toggleBurger={toggleBurger}
+                />
+                <MenuLink
+                    href="/about"
+                    label="ABOUT"
+                    toggleBurger={toggleBurger}
+                />
+                <MenuLink
+                    href="/contact"
+                    label="CONTACT"
+                    toggleBurger={toggleBurger}
+                />
             </AnimatedList>
         </AnimatedBox>
     );
