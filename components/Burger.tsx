@@ -14,16 +14,10 @@ const Burger: FC<{
             open: {
                 rotate: position === "top" ? 45 : -45,
                 y: position === "top" ? "7px" : "-7px",
-                transition: {
-                    duration: 0.2,
-                },
             },
             closed: {
                 rotate: 0,
                 y: 0,
-                transition: {
-                    delay: 0.15,
-                },
             },
         };
     };
@@ -52,7 +46,6 @@ const Burger: FC<{
                 variants={handleBurgerVariants("bottom")}
                 initial={false}
                 animate={isBurgerOpen ? "open" : "closed"}
-                transition={{ duration: "1" }}
                 position="absolute"
                 bottom={0}
                 left={0}
