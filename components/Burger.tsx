@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
-import { Box } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/system";
+import styles from "@/styles/Burger.module.css";
 
 const AnimatedBox = chakra(motion.div);
 
@@ -23,13 +23,14 @@ const Burger: FC<{
     };
 
     return (
-        <Box
+        <AnimatedBox
             position="relative"
             zIndex={20}
             w="40px"
             h="16px"
             cursor="pointer"
             onClick={toggleBurger}
+            className={styles.burgerContainer}
         >
             <AnimatedBox
                 variants={handleBurgerVariants("top")}
@@ -41,6 +42,7 @@ const Burger: FC<{
                 w="100%"
                 h="2px"
                 backgroundColor="black"
+                className={styles.burgerLine}
             ></AnimatedBox>
             <AnimatedBox
                 variants={handleBurgerVariants("bottom")}
@@ -52,8 +54,9 @@ const Burger: FC<{
                 w="100%"
                 h="2px"
                 backgroundColor="black"
+                className={styles.burgerLine}
             ></AnimatedBox>
-        </Box>
+        </AnimatedBox>
     );
 };
 

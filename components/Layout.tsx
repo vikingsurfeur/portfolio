@@ -1,16 +1,15 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import { Box } from "@chakra-ui/react";
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
     return (
-        <div>
-            <div>
-                <Header />
-                {children}
-                <Footer />
-            </div>
-        </div>
+        <>
+            <Header />
+            <Box marginTop="120px">{children}</Box>
+            <Footer />
+        </>
     );
 };
 

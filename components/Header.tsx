@@ -14,10 +14,17 @@ const Header: FC = () => {
     return (
         <Box
             as="header"
+            height="120px"
             display="flex"
             alignItems="center"
             justifyContent="space-between"
             p={10}
+            position="fixed"
+            top={0}
+            left={0}
+            right={0}
+            backgroundColor="rgba(255, 255, 255, 0.8)"
+            backdropFilter="blur(5px)"
         >
             <Image
                 src="/david_bouscarle_logo.png"

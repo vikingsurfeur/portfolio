@@ -85,6 +85,8 @@ const Menu: FC<{
             variants={menuVariants}
             initial={false}
             animate={isBurgerOpen ? "visible" : "hidden"}
+            h="100vh"
+            w="100vw"
             display="flex"
             alignItems="center"
             justifyContent="center"
