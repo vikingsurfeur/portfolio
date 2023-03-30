@@ -21,17 +21,17 @@ export default function Home() {
     );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
-        headers: {
-            Authorization: `Bearer ${envResolver.apiKey}`,
-        },
-    });
-    const user = await res.json();
+// export const getStaticProps: GetStaticProps = async (context) => {
+//     const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
+//         headers: {
+//             Authorization: `Bearer ${envResolver.apiKey}`,
+//         },
+//     });
+//     const user = await res.json();
 
-    return {
-        props: {
-            user: user[0],
-        },
-    };
-};
+//     return {
+//         props: {
+//             user: user[0],
+//         },
+//     };
+// };
