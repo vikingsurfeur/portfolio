@@ -30,6 +30,8 @@ export const getStaticProps: GetStaticProps<{ users: IUser[] }> = async (context
     });
     const users: IUser[] = await res.json();
 
+    console.log(context)
+
     return {
         props: {
             users,
