@@ -1,9 +1,10 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import HeadPage from "@/components/HeadPage";
 import { baseUrlApi, envResolver } from "@/lib/envResolver";
 import { IUser } from "@/lib/types/IUser";
+import { FC } from "react";
 
-export default function Home() {
+const Home: FC<{ users: IUser[] }> = ({ users }) => {
     return (
         <>
             <HeadPage
@@ -20,9 +21,11 @@ export default function Home() {
             <main></main>
         </>
     );
-}
+};
 
-export const getStaticProps: GetStaticProps<{ users: IUser[] }> = async (context) => {
+export const getServerSideProps: GetServerSideProps<{
+    users: IUser[];
+}> = async () => {
     const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
         headers: {
             Authorization: `Bearer ${envResolver.apiKey}`,
@@ -30,11 +33,11 @@ export const getStaticProps: GetStaticProps<{ users: IUser[] }> = async (context
     });
     const users: IUser[] = await res.json();
 
-    console.log(context)
-
     return {
         props: {
             users,
         },
     };
 };
+
+export default Home;
