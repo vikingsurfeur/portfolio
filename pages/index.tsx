@@ -4,10 +4,9 @@ import { baseUrlApi, envResolver } from "@/lib/envResolver";
 import { IUser } from "@/lib/types/IUser";
 import { FC } from "react";
 import { Heading } from "@chakra-ui/react";
+import { fetcher } from "@/lib/fetcher";
 
 const Home: FC<{ users: IUser[] }> = ({ users }) => {
-    console.log(users);
-    
     return (
         <>
             <HeadPage
@@ -31,12 +30,7 @@ const Home: FC<{ users: IUser[] }> = ({ users }) => {
 export const getServerSideProps: GetServerSideProps<{
     users: IUser[];
 }> = async () => {
-    const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
-        headers: {
-            Authorization: `Bearer ${envResolver.apiKey}`,
-        },
-    });
-    const users: IUser[] = await res.json();
+    const users = await fetcher('users?lastName=Bouscarle');
 
     return {
         props: {
