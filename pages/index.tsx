@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import HeadPage from "@/components/HeadPage";
 import { baseUrlApi, envResolver } from "@/lib/envResolver";
 import { IUser } from "@/lib/types/IUser";
@@ -23,7 +23,7 @@ const Home: FC<{ users: IUser[] }> = ({ users }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
     users: IUser[];
 }> = async () => {
     const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
