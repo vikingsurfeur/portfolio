@@ -1,12 +1,11 @@
 import { FC } from "react";
-import NextLink from "next/link";
 import { motion } from "framer-motion";
+import MenuLink from "./MenuLink";
 import { chakra } from "@chakra-ui/system";
-import { Link, UnorderedList, ListItem } from "@chakra-ui/react";
+import { UnorderedList } from "@chakra-ui/react";
 
 const AnimatedBox = chakra(motion.div);
 const AnimatedList = chakra(motion(UnorderedList));
-const AnimatedListItem = chakra(motion(ListItem));
 
 const menuVariants = {
     visible: {
@@ -15,7 +14,7 @@ const menuVariants = {
     hidden: {
         opacity: 0,
         transition: {
-            delay: 0.15,
+            delay: 0.1,
         },
     },
 };
@@ -35,47 +34,6 @@ const listVariants = {
     },
 };
 
-const listItemVariants = {
-    visible: {
-        y: 0,
-        opacity: 1,
-    },
-    hidden: {
-        y: "100%",
-        opacity: 0,
-    },
-};
-
-const MenuLink: FC<{
-    href: string;
-    label: string;
-    toggleBurger: () => void;
-}> = ({ href, label, toggleBurger }) => {
-    return (
-        <AnimatedListItem
-            variants={listItemVariants}
-            listStyleType="none"
-            marginBottom="30px"
-            height="fit-content"
-            whileHover={{
-                scale: 1.05,
-            }}
-            whileTap={{ scale: 0.95 }}
-        >
-            <Link
-                as={NextLink}
-                href={href}
-                fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                color="black"
-                _hover={{ textDecoration: "none" }}
-                onClick={toggleBurger}
-            >
-                {label}
-            </Link>
-        </AnimatedListItem>
-    );
-};
-
 const Menu: FC<{
     toggleBurger: () => void;
     isBurgerOpen: boolean;
@@ -88,6 +46,7 @@ const Menu: FC<{
             h="100vh"
             w="100vw"
             display="flex"
+            flexDirection="column"
             alignItems="center"
             justifyContent="center"
             position="fixed"
@@ -104,16 +63,12 @@ const Menu: FC<{
                 variants={listVariants}
                 initial="hidden"
                 animate={isBurgerOpen ? "visible" : "hidden"}
-                marginTop={0}
+                margin={0}
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
             >
-                <MenuLink 
-                    href="/" 
-                    label="HOME" 
-                    toggleBurger={toggleBurger} 
-                />
+                <MenuLink href="/" label="HOME" toggleBurger={toggleBurger} />
                 <MenuLink
                     href="/portfolio"
                     label="PORTFOLIO"

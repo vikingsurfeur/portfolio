@@ -1,7 +1,7 @@
 import { FC } from "react";
-import Image from "next/image";
 import { Box } from "@chakra-ui/react";
 import Burger from "./Burger";
+import IconLink from "./IconLink";
 
 const Header: FC<{
     toggleBurger: () => void;
@@ -23,9 +23,11 @@ const Header: FC<{
             backgroundColor="rgba(255, 255, 255, 0.8)"
             backdropFilter="blur(5px)"
         >
-            <Image
+            <IconLink
+                href="/"
                 src="/david_bouscarle_logo.png"
                 alt="Logo David Bouscarle photography"
+                target="_self"
                 width={45}
                 height={45}
             />

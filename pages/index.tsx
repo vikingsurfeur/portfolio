@@ -1,6 +1,7 @@
 import HeadPage from "@/components/HeadPage";
+import { baseUrlApi, envResolver } from "@/lib/envResolver";
 
-export default function Home() {
+const Home = () => {
     return (
         <>
             <HeadPage
@@ -12,11 +13,26 @@ export default function Home() {
                 places in the region and around the world to capture timeless and striking images. 
                 Explore his portfolio and let yourself be transported into a world of serenity and wonder. 
                 Contact David for collaborative projects, art print sales. 
-                Boost your inspiration with with David Bouscarle's photographs."    
+                Boost your inspiration with with David Bouscarle's photographs."
             />
-            <main>
-                
-            </main>
+            <main></main>
         </>
     );
+};
+
+export async function getStaticProps() {
+    const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
+        headers: {
+            Authorization: `Bearer ${envResolver.apiKey}`,
+        },
+    });
+    const user = await res.json();
+
+    return {
+        props: {
+            user: user[0],
+        },
+    };
 }
+
+export default Home;

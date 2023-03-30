@@ -39,11 +39,10 @@ const pageTransition = {
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
-
     return (
         <ChakraProvider theme={theme}>
             <Layout>
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence mode="wait">
                     <AnimatedBox
                         key={router.route}
                         initial="initial"
