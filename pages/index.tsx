@@ -3,8 +3,11 @@ import HeadPage from "@/components/HeadPage";
 import { baseUrlApi, envResolver } from "@/lib/envResolver";
 import { IUser } from "@/lib/types/IUser";
 import { FC } from "react";
+import { Heading } from "@chakra-ui/react";
 
 const Home: FC<{ users: IUser[] }> = ({ users }) => {
+    console.log(users);
+    
     return (
         <>
             <HeadPage
@@ -18,7 +21,9 @@ const Home: FC<{ users: IUser[] }> = ({ users }) => {
                 Contact David for collaborative projects, art print sales. 
                 Boost your inspiration with with David Bouscarle's photographs."
             />
-            <main></main>
+            <main>
+                <Heading>Hello HomePage</Heading>
+            </main>
         </>
     );
 };
