@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import HeadPage from "@/components/HeadPage";
 import { baseUrlApi, envResolver } from "@/lib/envResolver";
 
@@ -20,7 +21,7 @@ const Home = () => {
     );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
         headers: {
             Authorization: `Bearer ${envResolver.apiKey}`,
