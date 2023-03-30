@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 import HeadPage from "@/components/HeadPage";
 import { baseUrlApi, envResolver } from "@/lib/envResolver";
 
-const Home = () => {
+export default function Home() {
     return (
         <>
             <HeadPage
@@ -19,7 +19,7 @@ const Home = () => {
             <main></main>
         </>
     );
-};
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch(`${baseUrlApi}/users?lastName=Bouscarle`, {
@@ -34,6 +34,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
             user: user[0],
         },
     };
-}
-
-export default Home;
+};
