@@ -1,16 +1,12 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import { Box } from "@chakra-ui/react";
-import Menu from "./Menu";
 import Burger from "./Burger";
 
-const Header: FC = () => {
-    const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-
-    const toggleBurger = () => {
-        setIsBurgerOpen(!isBurgerOpen);
-    };
-
+const Header: FC<{
+    toggleBurger: () => void;
+    isBurgerOpen: boolean;
+}> = ({ toggleBurger, isBurgerOpen }) => {
     return (
         <Box
             as="header"
@@ -20,6 +16,7 @@ const Header: FC = () => {
             justifyContent="space-between"
             p={10}
             position="fixed"
+            zIndex={30}
             top={0}
             left={0}
             right={0}
@@ -29,17 +26,12 @@ const Header: FC = () => {
             <Image
                 src="/david_bouscarle_logo.png"
                 alt="Logo David Bouscarle photography"
-                width={50}
-                height={50}
-                style={{ position: "relative", zIndex: 1 }}
+                width={45}
+                height={45}
             />
             <Burger 
                 toggleBurger={toggleBurger}
                 isBurgerOpen={isBurgerOpen}
-            />
-            <Menu 
-                toggleBurger={toggleBurger}
-                isBurgerOpen={isBurgerOpen} 
             />
         </Box>
     );

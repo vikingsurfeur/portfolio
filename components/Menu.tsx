@@ -65,7 +65,7 @@ const MenuLink: FC<{
             <Link
                 as={NextLink}
                 href={href}
-                fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
+                fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
                 color="black"
                 _hover={{ textDecoration: "none" }}
                 onClick={toggleBurger}
@@ -91,7 +91,7 @@ const Menu: FC<{
             alignItems="center"
             justifyContent="center"
             position="fixed"
-            zIndex={10}
+            zIndex={20}
             backgroundColor="rgba(255, 255, 255, 0.8)"
             top={0}
             bottom={0}
@@ -104,6 +104,7 @@ const Menu: FC<{
                 variants={listVariants}
                 initial="hidden"
                 animate={isBurgerOpen ? "visible" : "hidden"}
+                marginTop={0}
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
