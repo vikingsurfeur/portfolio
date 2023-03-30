@@ -13,7 +13,7 @@ const IconLink: FC<{
 }> = ({ href, src, alt, target, width, height }) => {
     return (
         <Link as={NextLink} href={href} target={target}>
-            <Image src={src} alt={alt} width={width} height={height} />
+            <Image src={src} alt={alt} width={width} height={height} priority />
         </Link>
     );
 };
