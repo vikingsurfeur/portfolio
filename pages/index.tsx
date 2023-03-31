@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import HeadPage from "@/components/HeadPage";
 import { IUser } from "@/lib/types/IUser";
 import { fetcher } from "@/lib/fetcher";
@@ -22,7 +22,7 @@ const Home = () => {
     );
 };
 
-export const getStaticProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
     users: IUser[];
 }> = async () => {
     const users = await fetcher("users", "lastName=Bouscarle");
