@@ -39,6 +39,8 @@ const pageTransition = {
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
+    const { users } = pageProps;
+
     return (
         <ChakraProvider theme={theme}>
             <Layout>

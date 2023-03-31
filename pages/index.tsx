@@ -1,12 +1,9 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import HeadPage from "@/components/HeadPage";
-import { baseUrlApi, envResolver } from "@/lib/envResolver";
 import { IUser } from "@/lib/types/IUser";
-import { FC } from "react";
-import { Heading } from "@chakra-ui/react";
 import { fetcher } from "@/lib/fetcher";
 
-const Home: FC<{ users: IUser[] }> = ({ users }) => {
+const Home = () => {
     return (
         <>
             <HeadPage
@@ -20,17 +17,15 @@ const Home: FC<{ users: IUser[] }> = ({ users }) => {
                 Contact David for collaborative projects, art print sales. 
                 Boost your inspiration with with David Bouscarle's photographs."
             />
-            <main>
-                <Heading>Hello HomePage</Heading>
-            </main>
+            <main></main>
         </>
     );
 };
 
-export const getServerSideProps: GetServerSideProps<{
+export const getStaticProps: GetStaticProps<{
     users: IUser[];
 }> = async () => {
-    const users = await fetcher('users?lastName=Bouscarle');
+    const users = await fetcher("users", "lastName=Bouscarle");
 
     return {
         props: {
