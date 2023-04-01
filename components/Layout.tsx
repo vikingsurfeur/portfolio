@@ -4,10 +4,12 @@ import Header from "./Header";
 import Menu from "./Menu";
 import { Box } from "@chakra-ui/react";
 import { usePreventVerticalScroll } from "@/lib/hooks/usePreventVerticalScroll";
+import { IUser } from "@/lib/types/IUser";
 
 const Layout: FC<{
+    users: IUser[];
     children: ReactNode;
-}> = ({ children }) => {
+}> = ({ users, children }) => {
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
     usePreventVerticalScroll(isBurgerOpen);
@@ -21,7 +23,7 @@ const Layout: FC<{
             <Menu toggleBurger={toggleBurger} isBurgerOpen={isBurgerOpen} />
             <Header toggleBurger={toggleBurger} isBurgerOpen={isBurgerOpen} />
             <Box marginTop="120px">{children}</Box>
-            <Footer />
+            <Footer users={users} />
         </Box>
     );
 };

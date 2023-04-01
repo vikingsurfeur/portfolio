@@ -16,7 +16,7 @@ const Header: FC<{
             justifyContent="space-between"
             p={10}
             position="fixed"
-            zIndex={30}
+            zIndex={20}
             top={0}
             left={0}
             right={0}

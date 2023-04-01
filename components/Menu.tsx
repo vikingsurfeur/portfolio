@@ -9,12 +9,18 @@ const AnimatedList = chakra(motion(UnorderedList));
 
 const menuVariants = {
     visible: {
+        y: 0,
         opacity: 1,
+        transition: {
+            type: "tween",
+        }
     },
     hidden: {
+        y: "100%",
         opacity: 0,
         transition: {
-            delay: 0.1,
+            type: "tween",
+            delay: 0.4,
         },
     },
 };
@@ -41,7 +47,7 @@ const Menu: FC<{
     return (
         <AnimatedBox
             variants={menuVariants}
-            initial={false}
+            initial="hidden"
             animate={isBurgerOpen ? "visible" : "hidden"}
             h="100vh"
             w="100vw"

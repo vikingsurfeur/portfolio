@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <HeadPage
-                title="David Bouscarle | Photography | Home"
+                title="David Bouscarle Photography | Home"
                 description="David Bouscarle, a landscape and nature photographer 
                 from the Luberon region and based at the foot of Mont Ventoux, 
                 invites you to discover his vision of natural beauty through his captivating photographs. 

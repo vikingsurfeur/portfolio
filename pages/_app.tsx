@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <ChakraProvider theme={theme}>
-            <Layout>
+            <Layout users={users}>
                 <AnimatePresence mode="wait">
                     <AnimatedBox
                         key={router.route}
