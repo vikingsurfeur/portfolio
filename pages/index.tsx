@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next";
-import HeadPage from "@/components/headPage";
+import HeadPage from "@/components/HeadPage";
 import { IUser } from "@/lib/types/IUser";
 import { fetcher } from "@/lib/fetcher";
 

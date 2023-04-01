@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import { ChakraProvider } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/system";
 import theme from "@/lib/theme";

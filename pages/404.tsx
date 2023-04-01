@@ -1,5 +1,5 @@
-import AnimatedLink from "@/components/animatedLink";
-import HeadPage from "@/components/headPage";
+import AnimatedLink from "@/components/AnimatedLink";
+import HeadPage from "@/components/HeadPage";
 import { Container, List, Text } from "@chakra-ui/react";
 
 export default function NotFound() {

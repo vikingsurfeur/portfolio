@@ -1,6 +1,6 @@
 import { FC } from "react";
-import Burger from "./burger";
-import IconLink from "./iconLink";
+import Burger from "./Burger";
+import IconLink from "./IconLink";
 import { Box } from "@chakra-ui/react";
 
 const Header: FC<{

@@ -1,7 +1,7 @@
 import { FC, ReactNode, useEffect, useState } from "react";
-import Footer from "./footer";
-import Header from "./header";
-import Menu from "./menu";
+import Footer from "./Footer";
+import Header from "./Header";
+import Menu from "./Menu";
 import { Box, Spinner } from "@chakra-ui/react";
 import { usePreventVerticalScroll } from "@/lib/hooks/usePreventVerticalScroll";
 import { fetcher } from "@/lib/fetcher";
