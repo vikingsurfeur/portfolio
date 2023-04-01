@@ -1,7 +1,4 @@
-import { GetServerSideProps } from "next";
 import HeadPage from "@/components/HeadPage";
-import { IUser } from "@/lib/types/IUser";
-import { fetcher } from "@/lib/fetcher";
 
 const Home = () => {
     return (
@@ -20,18 +17,6 @@ const Home = () => {
             <main></main>
         </>
     );
-};
-
-export const getServerSideProps: GetServerSideProps<{
-    users: IUser[];
-}> = async () => {
-    const users = await fetcher("users", "lastName=Bouscarle");
-
-    return {
-        props: {
-            users,
-        },
-    };
 };
 
 export default Home;

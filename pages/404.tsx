@@ -16,7 +16,7 @@ export default function NotFound() {
                 minH="60vh"
                 display="flex"
                 flexDirection="column"
-                justifyContent="center"    
+                justifyContent="center"
             >
                 <Text>
                     Oops! Looks like you&apos;ve wandered into the unknown, like a
