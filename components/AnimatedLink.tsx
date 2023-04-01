@@ -1,0 +1,36 @@
+import { FC } from "react";
+import NextLink from "next/link";
+import { motion } from "framer-motion";
+import { chakra } from "@chakra-ui/system";
+import { Link, ListItem } from "@chakra-ui/react";
+
+const AnimatedListItem = chakra(motion(ListItem));
+
+const AnimatedLink: FC<{
+    href: string;
+    label: string;
+    target: string;
+}> = ({ href, label, target }) => {
+    return (
+        <AnimatedListItem
+            transformOrigin="left"
+            whileHover={{
+                scale: 1.05,
+            }}
+            whileTap={{
+                scale: 0.95,
+            }}
+        >
+            <Link
+                as={NextLink}
+                href={href}
+                target={target}
+                _hover={{ textDecoration: "none" }}
+            >
+                {label}
+            </Link>
+        </AnimatedListItem>
+    );
+};
+
+export default AnimatedLink;

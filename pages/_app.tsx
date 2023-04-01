@@ -1,9 +1,10 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
+import Layout from "@/components/Layout";
+import LayoutError from "@/components/LayoutError";
 import { ChakraProvider } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/system";
-import Layout from "@/components/Layout";
 import theme from "@/lib/theme";
 import { AnimatePresence, motion } from "framer-motion";
 import "@fontsource/bebas-neue";
@@ -43,20 +44,26 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <ChakraProvider theme={theme}>
-            <Layout users={users}>
-                <AnimatePresence mode="wait">
-                    <AnimatedBox
-                        key={router.route}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        variants={pageTransition}
-                    >
-                        <Component {...pageProps} />
-                    </AnimatedBox>
-                </AnimatePresence>
-                <Analytics />
-            </Layout>
+            {Array.isArray(users) ? (
+                <Layout users={users}>
+                    <AnimatePresence mode="wait">
+                        <AnimatedBox
+                            key={router.route}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={pageTransition}
+                        >
+                            <Component {...pageProps} />
+                        </AnimatedBox>
+                    </AnimatePresence>
+                    <Analytics />
+                </Layout>
+            ) : (
+                <LayoutError>
+                    <Component {...pageProps} />
+                </LayoutError>
+            )}
         </ChakraProvider>
     );
 }

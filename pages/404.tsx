@@ -1,7 +1,6 @@
-import { GetStaticProps } from "next";
+import AnimatedLink from "@/components/AnimatedLink";
 import HeadPage from "@/components/HeadPage";
-import { fetcher } from "@/lib/fetcher";
-import { IUser } from "@/lib/types/IUser";
+import { Container, List, Text } from "@chakra-ui/react";
 
 export default function NotFound() {
     return (
@@ -13,18 +12,23 @@ export default function NotFound() {
                 Just hit that back button, or click on one of our links to get back on track. 
                 We promise, we won't shear you off too much for getting lost."
             />
+            <Container>
+                <Text>
+                    Oops! Looks like you&apos;ve wandered into the unknown, like a
+                    lost sheep in the Alps. But don&apos;t worry, we&apos;re not about to
+                    abandon you! Let&apos;s find your way back to the herd, shall we?
+                    Just hit that back button, or click on one of our links to
+                    get back on track. We promise, we won&apos;t shear you off too
+                    much for getting lost.
+                </Text>
+                <List marginTop={20}>
+                    <AnimatedLink 
+                        href="/"
+                        target="_self"
+                        label="Back in a secure place little sheep &#8594;"
+                    />
+                </List>
+            </Container>
         </>
     );
 }
-
-export const getStaticProps: GetStaticProps<{
-    users: IUser[];
-}> = async () => {
-    const users = await fetcher("users", "lastName=Bouscarle");
-
-    return {
-        props: {
-            users,
-        },
-    };
-};
