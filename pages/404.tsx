@@ -1,5 +1,7 @@
+import { GetStaticProps } from "next";
 import HeadPage from "@/components/HeadPage";
-import Head from "next/head";
+import { fetcher } from "@/lib/fetcher";
+import { IUser } from "@/lib/types/IUser";
 
 export default function NotFound() {
     return (
@@ -14,3 +16,15 @@ export default function NotFound() {
         </>
     );
 }
+
+export const getStaticProps: GetStaticProps<{
+    users: IUser[];
+}> = async () => {
+    const users = await fetcher("users", "lastName=Bouscarle");
+
+    return {
+        props: {
+            users,
+        },
+    };
+};

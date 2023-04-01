@@ -57,7 +57,6 @@ const FooterBoxListItem: FC<{
 };
 
 const Footer: FC<{ users: IUser[] }> = ({ users }) => {
-    console.log(users);
     const handleCopyrightYear = () => {
         const currentYear = new Date().getFullYear();
 
