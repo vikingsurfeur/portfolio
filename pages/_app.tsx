@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <ChakraProvider theme={theme}>
-            {Array.isArray(users) ? (
+            {Array.isArray(pageProps) ? (
                 <Layout users={users}>
                     <AnimatePresence mode="wait">
                         <AnimatedBox
