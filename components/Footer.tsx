@@ -1,8 +1,8 @@
 import { FC, ReactNode } from "react";
-import Divider from "./Divider";
+import Divider from "./divider";
 import { Box, Heading, Text, List } from "@chakra-ui/react";
 import { IUser } from "@/lib/types/IUser";
-import AnimatedLink from "./AnimatedLink";
+import AnimatedLink from "./animatedLink";
 
 const FooterBoxItem: FC<{
     title: string;

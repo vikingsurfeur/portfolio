@@ -1,7 +1,7 @@
 import { FC } from "react";
+import Burger from "./burger";
+import IconLink from "./iconLink";
 import { Box } from "@chakra-ui/react";
-import Burger from "./Burger";
-import IconLink from "./IconLink";
 
 const Header: FC<{
     toggleBurger: () => void;

@@ -2,7 +2,7 @@ import AnimatedLink from "@/components/animatedLink";
 import HeadPage from "@/components/headPage";
 import { Container, List, Text } from "@chakra-ui/react";
 
-export default function NotFound() {
+export default function ErrorServer() {
     return (
         <>
             <HeadPage
@@ -12,25 +12,27 @@ export default function NotFound() {
                 Just hit that back button, or click on one of our links to get back on track. 
                 We promise, we won't shear you off too much for getting lost."
             />
-            <Container 
+            <Container
                 minH="60vh"
                 display="flex"
                 flexDirection="column"
-                justifyContent="center"    
+                justifyContent="center"
             >
                 <Text>
-                    Oops! Looks like you&apos;ve wandered into the unknown, like a
-                    lost sheep in the Alps. But don&apos;t worry, we&apos;re not about to
-                    abandon you! Let&apos;s find your way back to the herd, shall we?
-                    Just hit that back button, or click on one of our links to
-                    get back on track. We promise, we won&apos;t shear you off too
-                    much for getting lost.
+                    Oops! It seems like our server has gone haywire, like a
+                    shepherdless flock scattered in the hills. But fear not, we
+                    won&apos;t leave you stranded! We&apos;re on the case to get things
+                    back in order, so please bear with us. In the meantime, why
+                    not take a moment to enjoy the scenery and catch your
+                    breath? We&apos;ll let you know as soon as we&apos;ve corralled our
+                    servers back into shape. Thank you for your patience and
+                    understanding.
                 </Text>
                 <List marginTop={20}>
-                    <AnimatedLink 
+                    <AnimatedLink
                         href="/"
                         target="_self"
-                        label="Back in a secure place little sheep &#8594;"
+                        label="Go to a functional sheepfold &#8594;"
                     />
                 </List>
             </Container>

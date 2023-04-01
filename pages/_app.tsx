@@ -1,8 +1,7 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
-import Layout from "@/components/Layout";
-import LayoutError from "@/components/LayoutError";
+import Layout from "@/components/layout";
 import { ChakraProvider } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/system";
 import theme from "@/lib/theme";
@@ -40,30 +39,23 @@ const pageTransition = {
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
-    const { users } = pageProps;
 
     return (
         <ChakraProvider theme={theme}>
-            {Array.isArray(pageProps) ? (
-                <Layout users={users}>
-                    <AnimatePresence mode="wait">
-                        <AnimatedBox
-                            key={router.route}
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            variants={pageTransition}
-                        >
-                            <Component {...pageProps} />
-                        </AnimatedBox>
-                    </AnimatePresence>
-                    <Analytics />
-                </Layout>
-            ) : (
-                <LayoutError>
-                    <Component {...pageProps} />
-                </LayoutError>
-            )}
+            <Layout>
+                <AnimatePresence mode="wait">
+                    <AnimatedBox
+                        key={router.route}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        variants={pageTransition}
+                    >
+                        <Component {...pageProps} />
+                    </AnimatedBox>
+                </AnimatePresence>
+                <Analytics />
+            </Layout>
         </ChakraProvider>
     );
 }
