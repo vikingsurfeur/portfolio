@@ -24,8 +24,8 @@ const Burger: FC<{
     return (
         <AnimatedBox
             position="relative"
-            w="40px"
-            h="16px"
+            w={{ base: "30px", md: "40px" }}
+            h={{ base: "12px", md: "16px" }}
             cursor="pointer"
             onClick={toggleBurger}
         >

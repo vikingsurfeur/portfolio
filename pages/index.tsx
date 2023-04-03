@@ -5,8 +5,11 @@ import { Box, List } from "@chakra-ui/react";
 import { fetcher } from "@/lib/fetcher";
 import AnimatedLink from "@/components/AnimatedLink";
 import { IPortfolio } from "@/lib/types/IPortfolio";
+import Image from "next/image";
 
 const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
+    console.log(portfolios);
+
     return (
         <>
             <HeadPage
@@ -28,6 +31,12 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
                             target="_self"
                             label={p.attributes.title}
                         />
+                        <Image
+                            src={p.attributes.photographs?.data[0].attributes.file.data.attributes.formats.large.url}
+                            height={1000}
+                            width={1000}
+                            alt="Blabla"
+                        />
                     </List>
                 ))}
             </Box>
@@ -38,7 +47,7 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
 export const getServerSideProps: GetServerSideProps<{
     portfolios: IPortfolio;
 }> = async () => {
-    const portfolios = await fetcher("portfolios", "populate=*");
+    const portfolios = await fetcher("portfolios", "populate[photographs][populate][0]=file");
 
     if (!portfolios) {
         return {

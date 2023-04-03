@@ -2,14 +2,15 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
+        domains: ["res.cloudinary.com"],
         remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'portfolio.osc-fr1.scalingo.io',
-            port: '',
-            pathname: '**',
-          }
-        ]
+            {
+                protocol: "https",
+                hostname: "portfolio.osc-fr1.scalingo.io",
+                port: "",
+                pathname: "**",
+            },
+        ],
     },
 };
 
