@@ -1,7 +1,6 @@
 import { FC, ReactNode } from "react";
 import Divider from "./Divider";
 import { Box, Heading, Text, List } from "@chakra-ui/react";
-import { IUser } from "@/lib/types/IUser";
 import AnimatedLink from "./AnimatedLink";
 
 const FooterBoxItem: FC<{
@@ -9,7 +8,7 @@ const FooterBoxItem: FC<{
     children: ReactNode;
 }> = ({ title, children }) => {
     return (
-        <Box w={[300, 400, 500]}>
+        <Box w={[300, 400, 500]} px="12px">
             <Heading
                 as="h4"
                 size="lg"
@@ -25,7 +24,7 @@ const FooterBoxItem: FC<{
     );
 };
 
-const Footer: FC<{ users: IUser[] }> = ({ users }) => {
+const Footer = () => {
     const handleCopyrightYear = () => {
         const currentYear = new Date().getFullYear();
 
@@ -57,40 +56,40 @@ const Footer: FC<{ users: IUser[] }> = ({ users }) => {
                 <FooterBoxItem title="CONTACT">
                     <AnimatedLink
                         href="/contact"
-                        label="Send me a message &#8594;"
+                        label="Send me a message"
                         target="_self"
                     />
                 </FooterBoxItem>
                 <FooterBoxItem title="ABOUT">
                     <AnimatedLink
                         href="/about"
-                        label="A kind of little part of me &#8594;"
+                        label="A kind of little part of me"
                         target="_self"
                     />
                 </FooterBoxItem>
                 <FooterBoxItem title="FOLLOW ME">
                     <AnimatedLink
-                        href={users[0].behance}
+                        href="https://www.behance.net/davidbouscarle"
                         label="Behance"
                         target="_blank"
                     />
                     <AnimatedLink
-                        href={users[0].instagram}
+                        href="https://www.instagram.com/davidbouscarle"
                         label="Instagram"
                         target="_blank"
                     />
                     <AnimatedLink
-                        href={users[0].facebook}
+                        href="https://www.facebook.com/davidbouscarle"
                         label="Facebook"
                         target="_blank"
                     />
                     <AnimatedLink
-                        href={users[0].linkedin}
+                        href="https://fr.linkedin.com/in/davidbouscarle"
                         label="Linkedin"
                         target="_blank"
                     />
                     <AnimatedLink
-                        href={users[0].github}
+                        href="https://www.github.com/vikingsurfeur"
                         label="Github"
                         target="_blank"
                     />

@@ -26,6 +26,7 @@ const AnimatedLink: FC<{
                 href={href}
                 target={target}
                 _hover={{ textDecoration: "none" }}
+                fontSize={{ base: "14px", md: "16px" }}
             >
                 {label}
             </Link>

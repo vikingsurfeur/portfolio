@@ -1,6 +1,11 @@
+import { FC } from "react";
+import { GetServerSideProps } from "next";
 import HeadPage from "@/components/HeadPage";
+import { Box, List } from "@chakra-ui/react";
+import { fetcher } from "@/lib/fetcher";
+import AnimatedLink from "@/components/AnimatedLink";
 
-const Home = () => {
+const Home: FC<{ portfolios: any }> = ({ portfolios }) => {
     return (
         <>
             <HeadPage
@@ -14,9 +19,40 @@ const Home = () => {
                 Contact David for collaborative projects, art print sales. 
                 Boost your inspiration with with David Bouscarle's photographs."
             />
-            <main></main>
+            <Box as="main">
+                {portfolios.data.map((p: any) => (
+                    <List key={p.attributes.id}>
+                        <AnimatedLink
+                            href={`/portfolio/${p.attributes.slug}`}
+                            target="_self"
+                            label={p.attributes.title}
+                        />
+                    </List>
+                ))}
+            </Box>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    portfolios: any;
+}> = async () => {
+    const portfolios = await fetcher("portfolios");
+
+    if (!portfolios) {
+        return {
+            redirect: {
+                destination: "/500",
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {
+            portfolios,
+        },
+    };
 };
 
 export default Home;
