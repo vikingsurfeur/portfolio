@@ -3,15 +3,16 @@ import { ParsedUrlQuery } from "querystring";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Box } from "@chakra-ui/react";
 import { fetcher } from "@/lib/fetcher";
+import { IPortfolioData } from "@/lib/types/IPortfolio";
 
-const PortfolioItem: FC<{ portfolio: any }> = ({ portfolio }) => {
+const PortfolioItem: FC<{ portfolio: IPortfolioData }> = ({ portfolio }) => {
     return <Box>Portfolio item</Box>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const portfolios = await fetcher("portfolios");
 
-    const paths = portfolios.data.map((p: any) => {
+    const paths = portfolios.data.map((p: IPortfolioData) => {
         return {
             params: { slug: p.attributes.slug },
         };

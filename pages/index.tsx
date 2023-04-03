@@ -4,8 +4,9 @@ import HeadPage from "@/components/HeadPage";
 import { Box, List } from "@chakra-ui/react";
 import { fetcher } from "@/lib/fetcher";
 import AnimatedLink from "@/components/AnimatedLink";
+import { IPortfolio } from "@/lib/types/IPortfolio";
 
-const Home: FC<{ portfolios: any }> = ({ portfolios }) => {
+const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
     return (
         <>
             <HeadPage
@@ -20,8 +21,8 @@ const Home: FC<{ portfolios: any }> = ({ portfolios }) => {
                 Boost your inspiration with with David Bouscarle's photographs."
             />
             <Box as="main">
-                {portfolios.data.map((p: any) => (
-                    <List key={p.attributes.id}>
+                {portfolios.data.map((p) => (
+                    <List key={p.id}>
                         <AnimatedLink
                             href={`/portfolio/${p.attributes.slug}`}
                             target="_self"
@@ -35,9 +36,9 @@ const Home: FC<{ portfolios: any }> = ({ portfolios }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<{
-    portfolios: any;
+    portfolios: IPortfolio;
 }> = async () => {
-    const portfolios = await fetcher("portfolios");
+    const portfolios = await fetcher("portfolios", "populate=*");
 
     if (!portfolios) {
         return {

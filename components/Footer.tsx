@@ -8,7 +8,7 @@ const FooterBoxItem: FC<{
     children: ReactNode;
 }> = ({ title, children }) => {
     return (
-        <Box w={[300, 400, 500]} px="12px">
+        <Box w={[300, 400, 500]} paddingRight="12px">
             <Heading
                 as="h4"
                 size="lg"
