@@ -1,11 +1,12 @@
 import { FC } from "react";
 import { GetServerSideProps } from "next";
 import HeadPage from "@/components/HeadPage";
-import { Box, List } from "@chakra-ui/react";
+import { AspectRatio, Box, List } from "@chakra-ui/react";
 import { fetcher } from "@/lib/fetcher";
 import AnimatedLink from "@/components/AnimatedLink";
 import { IPortfolio } from "@/lib/types/IPortfolio";
 import Image from "next/image";
+import { getPhotographFormatRatio } from "@/lib/utils";
 
 const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
     console.log(portfolios);
@@ -31,12 +32,14 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
                             target="_self"
                             label={p.attributes.title}
                         />
-                        <Image
-                            src={p.attributes.photographs?.data[0].attributes.file.data.attributes.formats.large.url}
-                            height={1000}
-                            width={1000}
-                            alt="Blabla"
-                        />
+                        <AspectRatio maxW='400px' ratio={getPhotographFormatRatio(p.attributes.photographs?.data[0].attributes.format as string)}>
+                            <Image
+                                src={p.attributes.photographs?.data[0].attributes.file?.data.attributes.url as string}
+                                height={1000}
+                                width={1000}
+                                alt="Blabla"
+                            />
+                        </AspectRatio>
                     </List>
                 ))}
             </Box>
