@@ -1,5 +1,8 @@
-import { Box } from "@chakra-ui/react";
+// React / Next
 import { FC } from "react";
+
+// UI
+import { Box } from "@chakra-ui/react";
 
 const Divider: FC<{
     width: string;

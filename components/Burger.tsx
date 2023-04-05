@@ -1,4 +1,7 @@
+// React / Next
 import { FC } from "react";
+
+// UI
 import { motion } from "framer-motion";
 import { chakra } from "@chakra-ui/system";
 

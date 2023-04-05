@@ -1,6 +1,11 @@
+// React / Next
 import { FC } from "react";
-import { motion } from "framer-motion";
+
+// Component
 import MenuLink from "./MenuLink";
+
+// UI
+import { motion } from "framer-motion";
 import { chakra } from "@chakra-ui/system";
 import { UnorderedList } from "@chakra-ui/react";
 

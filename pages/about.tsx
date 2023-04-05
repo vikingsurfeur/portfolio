@@ -1,3 +1,4 @@
+// UI
 import { Box } from "@chakra-ui/react";
 
 const About = () => {

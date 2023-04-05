@@ -1,5 +1,8 @@
+// Components
 import AnimatedLink from "@/components/AnimatedLink";
 import HeadPage from "@/components/HeadPage";
+
+// UI
 import { Container, List, Text } from "@chakra-ui/react";
 
 export default function ErrorServer() {

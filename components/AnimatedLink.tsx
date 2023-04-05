@@ -1,5 +1,8 @@
+// React / Next
 import { FC } from "react";
 import NextLink from "next/link";
+
+// UI
 import { motion } from "framer-motion";
 import { chakra } from "@chakra-ui/system";
 import { Link, ListItem } from "@chakra-ui/react";

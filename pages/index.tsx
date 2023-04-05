@@ -1,11 +1,18 @@
+// React / Next
 import { FC } from "react";
 import { GetServerSideProps } from "next";
-import HeadPage from "@/components/HeadPage";
-import { AspectRatio, Box, List } from "@chakra-ui/react";
-import { fetcher } from "@/lib/fetcher";
-import AnimatedLink from "@/components/AnimatedLink";
-import { IPortfolio } from "@/lib/types/IPortfolio";
 import Image from "next/image";
+
+// Components
+import HeadPage from "@/components/HeadPage";
+import AnimatedLink from "@/components/AnimatedLink";
+
+// UI
+import { AspectRatio, Box, List } from "@chakra-ui/react";
+
+// Lib
+import { fetcher } from "@/lib/fetcher";
+import { IPortfolio } from "@/lib/types/IPortfolio";
 import { getPhotographFormatRatio } from "@/lib/utils";
 
 const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {

@@ -1,8 +1,15 @@
+// React / Next
 import { FC, ReactNode, useState } from "react";
+
+// Components
 import Footer from "./Footer";
 import Header from "./Header";
 import Menu from "./Menu";
+
+// UI
 import { Box } from "@chakra-ui/react";
+
+// Lib
 import { usePreventVerticalScroll } from "@/lib/hooks/usePreventVerticalScroll";
 
 const Layout: FC<{

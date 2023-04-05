@@ -1,6 +1,9 @@
+// React / Next
 import { FC } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
+
+// UI
 import { Link } from "@chakra-ui/react";
 
 const IconLink: FC<{
