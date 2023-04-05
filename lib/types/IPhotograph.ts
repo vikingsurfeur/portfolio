@@ -2,6 +2,10 @@ export interface IPhotograph {
     data: IPhotographData[];
 }
 
+export interface IPhotographCover {
+    data: IPhotographData;
+}
+
 export interface IPhotographData {
     id: number;
     attributes: IPhotographAttributes;

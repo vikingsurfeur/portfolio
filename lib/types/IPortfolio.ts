@@ -1,4 +1,4 @@
-import { IPhotograph } from "./IPhotograph";
+import { IPhotograph, IPhotographCover } from "./IPhotograph";
 import { IUser } from "./IUser";
 
 export interface IPortfolio {
@@ -22,6 +22,7 @@ export interface IPortfolioAttributes {
     updatedAt: string;
     user?: IUser;
     photographs?: IPhotograph;
+    photographCover?: IPhotographCover;
 }
 
 export interface IPortfolioPagination {
