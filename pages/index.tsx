@@ -16,8 +16,6 @@ import { IPortfolio } from "@/lib/types/IPortfolio";
 import { getPhotographFormatRatio } from "@/lib/utils";
 
 const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
-    console.log(portfolios);
-
     return (
         <>
             <HeadPage
@@ -39,9 +37,19 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
                             target="_self"
                             label={p.attributes.title}
                         />
-                        <AspectRatio maxW='400px' ratio={getPhotographFormatRatio(p.attributes?.photographCover?.data.attributes.format as string)}>
+                        <AspectRatio
+                            maxW="400px"
+                            ratio={getPhotographFormatRatio(
+                                p.attributes?.photographCover?.data.attributes
+                                    .format as string
+                            )}
+                        >
                             <Image
-                                src={p.attributes?.photographCover?.data.attributes.file?.data.attributes.url as string}
+                                src={
+                                    p.attributes?.photographCover?.data
+                                        .attributes.file?.data.attributes
+                                        .url as string
+                                }
                                 height={1000}
                                 width={1000}
                                 alt="Blabla"
@@ -54,9 +62,7 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps<{
-    portfolios: IPortfolio;
-}> = async () => {
+export const getServerSideProps: GetServerSideProps<{ portfolios: IPortfolio }> = async () => {
     const portfolios = await fetcher("portfolios", "populate[photographCover][populate][0]=file");
 
     if (!portfolios) {

@@ -15,7 +15,7 @@ const Burger: FC<{
         return {
             open: {
                 rotate: position === "top" ? 45 : -45,
-                y: position === "top" ? "7px" : "-7px",
+                y: position === "top" ? "6px" : "-6px",
             },
             closed: {
                 rotate: 0,
@@ -27,8 +27,8 @@ const Burger: FC<{
     return (
         <AnimatedBox
             position="relative"
-            w={{ base: "30px", md: "40px" }}
-            h={{ base: "12px", md: "16px" }}
+            w="38px"
+            h="14px"
             cursor="pointer"
             onClick={toggleBurger}
         >
