@@ -18,6 +18,7 @@ import theme from "@/lib/theme";
 
 const AnimatedBox = chakra(motion.div);
 
+// Animation variants
 const pageTransition = {
     initial: {
         opacity: 0,

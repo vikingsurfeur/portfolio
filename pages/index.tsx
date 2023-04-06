@@ -13,9 +13,11 @@ import { AspectRatio, Box, List } from "@chakra-ui/react";
 // Lib
 import { fetcher } from "@/lib/fetcher";
 import { IPortfolio } from "@/lib/types/IPortfolio";
-import { getPhotographFormatRatio } from "@/lib/utils";
+import { getPhotographFormatRatio, getPropertyFromObject } from "@/lib/utils";
 
 const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
+    console.log(portfolios);
+    
     return (
         <>
             <HeadPage
@@ -33,26 +35,19 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
                 {portfolios.data.map((p) => (
                     <List key={p.id}>
                         <AnimatedLink
-                            href={`/portfolio/${p.attributes.slug}`}
+                            href={`/portfolio/${getPropertyFromObject(p, "slug")}`}
                             target="_self"
-                            label={p.attributes.title}
+                            label={getPropertyFromObject(p, "title")}
                         />
                         <AspectRatio
                             maxW="400px"
-                            ratio={getPhotographFormatRatio(
-                                p.attributes?.photographCover?.data.attributes
-                                    .format as string
-                            )}
+                            ratio={getPhotographFormatRatio(getPropertyFromObject(p, "format"))}
                         >
                             <Image
-                                src={
-                                    p.attributes?.photographCover?.data
-                                        .attributes.file?.data.attributes
-                                        .url as string
-                                }
-                                height={1000}
-                                width={1000}
-                                alt="Blabla"
+                                src={getPropertyFromObject(p, "url", "medium")}
+                                height={getPropertyFromObject(p, "height", "medium")}
+                                width={getPropertyFromObject(p, "width", "medium")}
+                                alt={getPropertyFromObject(p, "alternativeText")}
                             />
                         </AspectRatio>
                     </List>

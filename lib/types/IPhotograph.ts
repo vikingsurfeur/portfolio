@@ -1,3 +1,17 @@
+// Photograph Enum ratio
+const Ratio = {
+    r1: "r1/1",
+    r2: "r4/5",
+    r3: "r5/7",
+    r4: "r2/3",
+    r5: "r4/3",
+    r6: "r16/9",
+    r7: "r16/10",
+} as const;
+
+type Ratio = typeof Ratio[keyof typeof Ratio];
+
+// Photograph Interface
 export interface IPhotograph {
     data: IPhotographData[];
 }
@@ -13,8 +27,7 @@ export interface IPhotographData {
 
 export interface IPhotographAttributes {
     createdAt: string;
-    format: "r1/1" | "r4/5" | "r5/7" | "r2/3" | "r4/3" | "r16/9" | "r16/10" | null;
-    orientation: "vertical" | "horizontal" | null;
+    format: Ratio;
     file?: IPhotographFile;
     isLastPortfolio: boolean;
     isOnSale: boolean;
@@ -53,11 +66,11 @@ export interface ICloudinaryMetadata {
 }
 
 export interface IPhotographFileAttributes extends IPhotographAwareData {
-    alternativeText: null | string;
-    caption: null; // TODO: check if this property can have someone other null
+    alternativeText: string | null;
+    caption: string | null;
     createdAt: string;
     format: IPhotographFormat;
-    previewUrl: null | string;
+    previewUrl: string | null;
     provider: "cloudinary",
     updatedAt: string;
 }
@@ -70,5 +83,5 @@ export interface IPhotographFormat {
 }
 
 export interface IPhotographFormatData extends IPhotographAwareData {
-    path: null | string;
+    path: string | null;
 }

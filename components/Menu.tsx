@@ -12,6 +12,7 @@ import { UnorderedList } from "@chakra-ui/react";
 const AnimatedBox = chakra(motion.div);
 const AnimatedList = chakra(motion(UnorderedList));
 
+// Animation variants
 const menuVariants = {
     visible: {
         y: 0,
