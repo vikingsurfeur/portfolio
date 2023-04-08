@@ -15,7 +15,7 @@ const Header: FC<{
     return (
         <Box
             as="header"
-            height={{ base: "80px", md: "120px"}}
+            height={{ base: "90px", md: "100px"}}
             display="flex"
             alignItems="center"
             justifyContent="space-between"

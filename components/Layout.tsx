@@ -34,7 +34,7 @@ const Layout: FC<{
                     toggleBurger={toggleBurger}
                     isBurgerOpen={isBurgerOpen}
                 />
-                <Box marginTop={{ base: "80px", md: "120px"}}>
+                <Box marginTop={{ base: "90px", md: "100px"}}>
                     {children}
                 </Box>
                 <Footer />
