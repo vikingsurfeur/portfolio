@@ -41,13 +41,14 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
                         />
                         <AspectRatio
                             maxW="400px"
-                            ratio={getPhotographFormatRatio(getPropertyFromObject(p, "format"))}
+                            ratio={getPhotographFormatRatio(getPropertyFromObject(p, "ratio"))}
                         >
                             <Image
                                 src={getPropertyFromObject(p, "url", "medium")}
                                 height={getPropertyFromObject(p, "height", "medium")}
                                 width={getPropertyFromObject(p, "width", "medium")}
                                 alt={getPropertyFromObject(p, "alternativeText")}
+                                priority
                             />
                         </AspectRatio>
                     </List>
@@ -58,7 +59,7 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<{ portfolios: IPortfolio }> = async () => {
-    const portfolios = await fetcher("portfolios", "populate[photographCover][populate][0]=file");
+    const portfolios = await fetcher("portfolios", "populate[photographCover][populate][0]=file&pagination[limit]=3&sort[0]=createdAt:desc");
 
     if (!portfolios) {
         return {
