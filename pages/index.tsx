@@ -14,10 +14,12 @@ import { AspectRatio, Box, List } from "@chakra-ui/react";
 import { fetcher } from "@/lib/fetcher";
 import { IPortfolio } from "@/lib/types/IPortfolio";
 import { getPhotographFormatRatio, getPropertyFromObject } from "@/lib/utils";
+import { IPhotograph } from "@/lib/types/IPhotograph";
 
-const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
-    console.log(portfolios);
-    
+const Home: FC<{
+    portfolios: IPortfolio;
+    lastWorkPortfolio: IPhotograph[];
+}> = ({ portfolios, lastWorkPortfolio }) => {
     return (
         <>
             <HeadPage
@@ -41,7 +43,9 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
                         />
                         <AspectRatio
                             maxW="400px"
-                            ratio={getPhotographFormatRatio(getPropertyFromObject(p, "ratio"))}
+                            ratio={getPhotographFormatRatio(
+                                getPropertyFromObject(p, "ratio")
+                            )}
                         >
                             <Image
                                 src={getPropertyFromObject(p, "url", "medium")}
@@ -58,10 +62,19 @@ const Home: FC<{ portfolios: IPortfolio }> = ({ portfolios }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps<{ portfolios: IPortfolio }> = async () => {
-    const portfolios = await fetcher("portfolios", "populate[photographCover][populate][0]=file&pagination[limit]=3&sort[0]=createdAt:desc");
+export const getServerSideProps: GetServerSideProps<{
+    portfolios: IPortfolio;
+}> = async () => {
+    const portfolios = await fetcher(
+        "portfolios",
+        "populate[photographCover][populate][0]=file&pagination[limit]=3&sort[0]=createdAt:desc"
+    );
+    const lastWorkPortfolio = await fetcher(
+        "photographs",
+        "populate=*&filters[isLastWorkPortfolio][$eq]=true"
+    );
 
-    if (!portfolios) {
+    if (!portfolios || !lastWorkPortfolio) {
         return {
             redirect: {
                 destination: "/500",
@@ -73,6 +86,7 @@ export const getServerSideProps: GetServerSideProps<{ portfolios: IPortfolio }> 
     return {
         props: {
             portfolios,
+            lastWorkPortfolio,
         },
     };
 };
