@@ -1,5 +1,5 @@
 // React / Next
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 
@@ -8,18 +8,27 @@ import HeadPage from "@/components/HeadPage";
 import AnimatedLink from "@/components/AnimatedLink";
 
 // UI
-import { AspectRatio, Box, List } from "@chakra-ui/react";
+import { AspectRatio, Box, List, Slide } from "@chakra-ui/react";
+import "lightbox.js-react/dist/index.css";
+import { SlideshowLightbox, initLightboxJS } from "lightbox.js-react";
 
 // Lib
 import { fetcher } from "@/lib/fetcher";
+import { envResolver } from "@/lib/envResolver";
 import { IPortfolio } from "@/lib/types/IPortfolio";
 import { getPhotographFormatRatio, getPropertyFromObject } from "@/lib/utils";
 import { IPhotograph } from "@/lib/types/IPhotograph";
 
 const Home: FC<{
     portfolios: IPortfolio;
-    lastWorkPortfolio: IPhotograph[];
+    lastWorkPortfolio: IPhotograph;
 }> = ({ portfolios, lastWorkPortfolio }) => {
+    useEffect(() => {
+        initLightboxJS(`${envResolver.licenseLightbox}`, "individual");
+    });
+
+    console.log(lastWorkPortfolio);
+
     return (
         <>
             <HeadPage
@@ -34,6 +43,29 @@ const Home: FC<{
                 Boost your inspiration with with David Bouscarle's photographs."
             />
             <Box as="main">
+                <SlideshowLightbox 
+                    lightboxIdentifier="lightboxIndex" 
+                    framework="next" 
+                    images={lastWorkPortfolio.data}
+                    fullScreen={true}
+                >
+                    {lastWorkPortfolio.data.map((p) => (
+                        <AspectRatio
+                            key={p.id}
+                            maxW="400px"
+                            ratio={1}
+                        >
+                            <Image
+                                src={getPropertyFromObject(p, "url", "medium")}
+                                height={300}
+                                width={300}
+                                alt={getPropertyFromObject(p, "alternativeText")}
+                                priority
+                                data-lightboxjs="lightboxIndex"
+                            />
+                        </AspectRatio>
+                    ))}
+                </SlideshowLightbox>
                 {portfolios.data.map((p) => (
                     <List key={p.id}>
                         <AnimatedLink
@@ -43,9 +75,7 @@ const Home: FC<{
                         />
                         <AspectRatio
                             maxW="400px"
-                            ratio={getPhotographFormatRatio(
-                                getPropertyFromObject(p, "ratio")
-                            )}
+                            ratio={getPhotographFormatRatio(getPropertyFromObject(p, "ratio"))}
                         >
                             <Image
                                 src={getPropertyFromObject(p, "url", "medium")}
@@ -71,7 +101,7 @@ export const getServerSideProps: GetServerSideProps<{
     );
     const lastWorkPortfolio = await fetcher(
         "photographs",
-        "populate=*&filters[isLastWorkPortfolio][$eq]=true"
+        "populate=*&filters[isLastWorkPortfolio][$eq]=true&pagination[limit]=5&sort[0]=createdAt:desc"
     );
 
     if (!portfolios || !lastWorkPortfolio) {
