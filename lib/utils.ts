@@ -1,4 +1,6 @@
-// Get ratio of photograph
+import { IPhotographData } from "./types/IPhotograph";
+import { randomBytes } from "crypto";
+
 export const getPhotographFormatRatio = (ratio: string): number => {
     const regex = /^r(\d+)\/(\d+)$/;
     const match = ratio.match(regex);
@@ -13,8 +15,6 @@ export const getPhotographFormatRatio = (ratio: string): number => {
     return numerator / denominator;
 }
 
-// Get property of an entity object
-// Image size Enum
 const ImageSize = {
     thumbnail: "thumbnail",
     small: "small",
@@ -41,3 +41,16 @@ export const getPropertyFromObject = (obj: any, property: string, imageSize?: Im
 
     return undefined;
 };
+
+export const transformPhotographsDataForLightbox = (photographData: IPhotographData[]) => {
+    return photographData.map((p) => (
+        {
+            src: getPropertyFromObject(p, "url", "medium"),
+            alt: getPropertyFromObject(p, "alternativeText"),
+        }
+    ));
+}
+
+export const getRandomString = (): string => {
+    return randomBytes(20).toString('hex');
+}

@@ -16,7 +16,12 @@ import { SlideshowLightbox, initLightboxJS } from "lightbox.js-react";
 import { fetcher } from "@/lib/fetcher";
 import { envResolver } from "@/lib/envResolver";
 import { IPortfolio } from "@/lib/types/IPortfolio";
-import { getPhotographFormatRatio, getPropertyFromObject } from "@/lib/utils";
+import { 
+    getPhotographFormatRatio, 
+    getPropertyFromObject, 
+    getRandomString, 
+    transformPhotographsDataForLightbox 
+} from "@/lib/utils";
 import { IPhotograph } from "@/lib/types/IPhotograph";
 
 const Home: FC<{
@@ -27,7 +32,7 @@ const Home: FC<{
         initLightboxJS(`${envResolver.licenseLightbox}`, "individual");
     });
 
-    console.log(lastWorkPortfolio);
+    const lightboxPhotographSrc = transformPhotographsDataForLightbox(lastWorkPortfolio.data)
 
     return (
         <>
@@ -46,20 +51,21 @@ const Home: FC<{
                 <SlideshowLightbox 
                     lightboxIdentifier="lightboxIndex" 
                     framework="next" 
-                    images={lastWorkPortfolio.data}
+                    images={lightboxPhotographSrc}
                     fullScreen={true}
+                    backgroundColor="rgba(0, 0, 0, 0.95)"
                 >
-                    {lastWorkPortfolio.data.map((p) => (
+                    {lightboxPhotographSrc.map((p) => (
                         <AspectRatio
-                            key={p.id}
+                            key={getRandomString()}
                             maxW="400px"
                             ratio={1}
                         >
                             <Image
-                                src={getPropertyFromObject(p, "url", "medium")}
+                                src={p.src}
                                 height={300}
                                 width={300}
-                                alt={getPropertyFromObject(p, "alternativeText")}
+                                alt={p.alt}
                                 priority
                                 data-lightboxjs="lightboxIndex"
                             />

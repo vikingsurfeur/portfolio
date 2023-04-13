@@ -1,9 +1,10 @@
+import { IPaginationAware } from "./IAware";
 import { IPhotograph, IPhotographCover } from "./IPhotograph";
 import { IUser } from "./IUser";
 
 export interface IPortfolio {
     data: IPortfolioData[];
-    meta: IPortfolioPagination;
+    meta: IPaginationAware;
 }
 
 export interface IPortfolioData {
@@ -23,11 +24,4 @@ export interface IPortfolioAttributes {
     user?: IUser;
     photographs?: IPhotograph;
     photographCover?: IPhotographCover;
-}
-
-export interface IPortfolioPagination {
-    page: number;
-    pageCount: number;
-    pageSize: number;
-    total: number;
 }

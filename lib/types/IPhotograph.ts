@@ -1,3 +1,5 @@
+import { IPaginationAware } from "./IAware";
+
 // Photograph Enum ratio
 const Ratio = {
     r1: "r1/1",
@@ -14,10 +16,12 @@ type Ratio = typeof Ratio[keyof typeof Ratio];
 // Photograph Interface
 export interface IPhotograph {
     data: IPhotographData[];
+    meta: IPaginationAware;
 }
 
 export interface IPhotographCover {
     data: IPhotographData;
+    meta: IPaginationAware;
 }
 
 export interface IPhotographData {
