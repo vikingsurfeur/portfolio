@@ -11,6 +11,8 @@ import AnimatedLink from "@/components/AnimatedLink";
 import { AspectRatio, Box, List, Slide } from "@chakra-ui/react";
 import "lightbox.js-react/dist/index.css";
 import { SlideshowLightbox, initLightboxJS } from "lightbox.js-react";
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Lib
 import { fetcher } from "@/lib/fetcher";
@@ -55,22 +57,28 @@ const Home: FC<{
                     fullScreen={true}
                     backgroundColor="rgba(0, 0, 0, 0.95)"
                 >
-                    {lightboxPhotographSrc.map((p) => (
-                        <AspectRatio
-                            key={getRandomString()}
-                            maxW="400px"
-                            ratio={1}
-                        >
-                            <Image
-                                src={p.src}
-                                height={300}
-                                width={300}
-                                alt={p.alt}
-                                priority
-                                data-lightboxjs="lightboxIndex"
-                            />
-                        </AspectRatio>
-                    ))}
+                    <Swiper
+                        slidesPerView={1}
+                    >
+                        {lightboxPhotographSrc.map((p) => (
+                            <AspectRatio
+                                key={getRandomString()}
+                                maxW="400px"
+                                ratio={1}
+                            >
+                                <SwiperSlide key={getRandomString()}>
+                                    <Image
+                                        src={p.src}
+                                        height={300}
+                                        width={300}
+                                        alt={p.alt}
+                                        priority
+                                        data-lightboxjs="lightboxIndex"
+                                    />
+                                </SwiperSlide>
+                            </AspectRatio>
+                        ))}
+                    </Swiper>
                 </SlideshowLightbox>
                 {portfolios.data.map((p) => (
                     <List key={p.id}>
