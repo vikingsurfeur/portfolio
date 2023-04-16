@@ -1,5 +1,5 @@
 // React / Next
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 
@@ -34,7 +34,27 @@ const Home: FC<{
         initLightboxJS(`${envResolver.licenseLightbox}`, "individual");
     });
 
-    const lightboxPhotographSrc = transformPhotographsDataForLightbox(lastWorkPortfolio.data)
+    const lastWorkPortfolioPhotograph = transformPhotographsDataForLightbox(lastWorkPortfolio.data)
+    
+    const [slidesPerView, setSlidesPerView] = useState<number>(2.5);
+    const [width, setWidth] = useState<number | undefined>(undefined);
+
+    useEffect(() => {
+        const handleSlidesPerView = () => {
+            if (typeof window !== "undefined") {
+                setWidth(window.innerWidth);
+            }
+
+            width && width <= 1280 ? setSlidesPerView(1) : setSlidesPerView(2.5);
+        }
+
+        window.addEventListener("DOMContentLoaded", handleSlidesPerView);
+        window.addEventListener("resize", handleSlidesPerView);
+        return () => {
+            window.removeEventListener("DOMContentLoaded", handleSlidesPerView);
+            window.removeEventListener("resize", handleSlidesPerView);
+        }
+    }, [width])
 
     return (
         <>
@@ -50,36 +70,40 @@ const Home: FC<{
                 Boost your inspiration with with David Bouscarle's photographs."
             />
             <Box as="main">
-                <SlideshowLightbox 
-                    lightboxIdentifier="lightboxIndex" 
-                    framework="next" 
-                    images={lightboxPhotographSrc}
-                    fullScreen={true}
-                    backgroundColor="rgba(0, 0, 0, 0.95)"
-                >
-                    <Swiper
-                        slidesPerView={1}
+                <Box w={{ base: "100vw", xl: "55vw" }} marginLeft={{ base: "inherit", xl: "auto" }}>
+                    <SlideshowLightbox 
+                        lightboxIdentifier="lightboxIndex" 
+                        framework="next" 
+                        images={lastWorkPortfolioPhotograph}
+                        fullScreen={true}
+                        backgroundColor="rgba(0, 0, 0, 0.95)"
                     >
-                        {lightboxPhotographSrc.map((p) => (
-                            <AspectRatio
-                                key={getRandomString()}
-                                maxW="400px"
-                                ratio={1}
-                            >
-                                <SwiperSlide key={getRandomString()}>
-                                    <Image
-                                        src={p.src}
-                                        height={300}
-                                        width={300}
-                                        alt={p.alt}
-                                        priority
-                                        data-lightboxjs="lightboxIndex"
-                                    />
-                                </SwiperSlide>
-                            </AspectRatio>
-                        ))}
-                    </Swiper>
-                </SlideshowLightbox>
+                        <Swiper
+                            slidesPerView={slidesPerView}
+                            spaceBetween={50}
+                        >
+                            {lastWorkPortfolioPhotograph.map((p) => (
+                                <AspectRatio
+                                    key={getRandomString()}
+                                    maxW="400px"
+                                    ratio={p.ratio}
+                                >
+                                    <SwiperSlide key={getRandomString()}>
+                                        <Image
+                                            src={p.src}
+                                            height={400}
+                                            width={400}
+                                            alt={p.alt}
+                                            style={{ margin: "0 auto" }}
+                                            priority
+                                            data-lightboxjs="lightboxIndex"
+                                        />
+                                    </SwiperSlide>
+                                </AspectRatio>
+                            ))}
+                        </Swiper>
+                    </SlideshowLightbox>
+                </Box>
                 {portfolios.data.map((p) => (
                     <List key={p.id}>
                         <AnimatedLink

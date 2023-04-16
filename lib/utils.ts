@@ -47,6 +47,7 @@ export const transformPhotographsDataForLightbox = (photographData: IPhotographD
         {
             src: getPropertyFromObject(p, "url", "medium"),
             alt: getPropertyFromObject(p, "alternativeText"),
+            ratio: getPropertyFromObject(p, "ratio"),
         }
     ));
 }
